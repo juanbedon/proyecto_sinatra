@@ -5,10 +5,10 @@ get '/' do
 	erb :index
 end
 
-get '/create_task' do
+post '/create_task' do
 	@task = params[:task]
 	if @task == @task
-		task = <%= Tarea.create()%>
+		task = Tarea.create(@task)
 	end
     task
 end

@@ -16,16 +16,20 @@
     </div>
     <div class="row">
       <div class="col">
-        <a class="btn btn-primary my-2" href='/create_task'>Create Task</a>
+        <form action='/create_task' method='post'>
+          <div class="form-group">
+            <input type="text" name="task" placeholder="Task">
+            <input type="submit" value="Add Task" class="btn-primary">
+          </div>
+        </form>
       </div>
     </div>
     <div class="row">
         <div class="col">
-          <h4>To Do</h4>
-          <ul><%= Tarea.all %></ul>
+          <h4>To Do:</h4>
         </div>
         <div class="col">
-          <h4>Done</h4>
+          <h4>Done:</h4>
         </div>
   </div>
 
