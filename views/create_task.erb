@@ -8,24 +8,16 @@
 <body>
   <div class="container">
     <div class="row">
-      <div class="jumbotron jumbotron-fluid container">
-        <div class="container">
-          <h1 class="display-4 text-center">TO DO LIST</h1>
-        </div>
-      </div>
-    </div>
-    <div class="row">
       <div class="col">
-        <a class="btn btn-primary my-2" href='/create_task'>Create Task</a>
+        <form>
+          <div class="form-group text-center">
+            <h4 class="display-4 my-5">New Task:</h4>
+            <textarea class="form-control my-5" id="exampleFormControlTextarea1" rows="1"></textarea>
+            <a class="btn btn-primary my-2" href='/'>Add Task</a>
+          </div>
+        </form>
       </div>
     </div>
-    <div class="row">
-        <div class="col">
-          <h4>To Do</h4>
-        </div>
-        <div class="col">
-          <h4>Done</h4>
-        </div>
   </div>
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
