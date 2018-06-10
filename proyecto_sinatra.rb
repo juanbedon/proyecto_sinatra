@@ -6,9 +6,9 @@ get '/' do
 end
 
 get '/create_task' do
-	erb :create_task
-end
-
-post '/create_task' do
-	erb :index
+	@task = params[:task]
+	if @task == @task
+		task = <%= Tarea.create()%>
+	end
+    task
 end

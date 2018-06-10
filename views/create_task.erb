@@ -9,11 +9,11 @@
   <div class="container">
     <div class="row">
       <div class="col">
-        <form>
+        <h4 class="display-4 my-5">New Task:</h4>
+        <form action='/create_task' method='get'>
           <div class="form-group text-center">
-            <h4 class="display-4 my-5">New Task:</h4>
-            <textarea class="form-control my-5" id="exampleFormControlTextarea1" rows="1"></textarea>
-            <a class="btn btn-primary my-2" href='/'>Add Task</a>
+            <input type="text" name="task">
+            <input type="submit" value="New Task">
           </div>
         </form>
       </div>
