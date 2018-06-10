@@ -16,21 +16,48 @@
     </div>
     <div class="row">
       <div class="col">
-        <form action='/create_task' method='post'>
+        <form action="/createtask" method="post">
           <div class="form-group">
             <input type="text" name="task" placeholder="Task">
-            <input type="submit" value="Add Task" class="btn-primary">
+            <button type="submit">Add Task</button>
           </div>
         </form>
+        <!--<form action="/completetask" method="post">
+          <div class="form-group">
+            <input type="text" name="task" placeholder="Task">
+            <button type="submit">Complete Task</button>
+          </div>
+        </form>-->
       </div>
     </div>
     <div class="row">
         <div class="col">
           <h4>To Do:</h4>
+          <table class="table table-striped">
+            <tbody>
+              <tr>
+                <% n = @tareas.length %>
+                <% n.times do |i|%>
+                <%= @tareas[i]["title"] %><br>
+                <% end %>
+              </tr>
+            </tbody>
+          </table>
         </div>
         <div class="col">
           <h4>Done:</h4>
+          <table class="table table-striped">
+            <tbody>
+              <tr>
+                <% n = @tareas.length %>
+                <% n.times do |i|%>
+                <%= @tareas[i]["done"] %><br>
+                <% end %>
+              </tr>
+            </tbody>
+          </table>
         </div>
+    </div>
   </div>
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
