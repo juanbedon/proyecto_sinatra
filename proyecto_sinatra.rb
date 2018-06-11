@@ -2,21 +2,26 @@ require 'sinatra'
 require 'make_todo'
 
 get "/" do
-	@tareas = Tarea.all
+	@tasks = Tarea.all
+
 	erb :index
 end
 
 post "/createtask" do
-	@task = params[:task]
-	task = Tarea.create(@task)
+	@tasks = params[:tasks]
+	tasks = Tarea.create(@tasks)
 
 	redirect "/"
 end
 
-=begin
+patch "/updatetask/:id" do
+	Tarea.update(params[:id])
 
-post "/completetask" do
-	puts "Entró a completetask"
+	redirect "/"
 end
 
-=end
+delete "/deletetask/:id" do
+	Tarea.destroy(params[:id])
+
+	redirect "/"
+end

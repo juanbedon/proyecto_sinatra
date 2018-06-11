@@ -2,64 +2,49 @@
 <head>
   <meta lang="es">
   <meta charset="UTF-8">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" />
+
   <title>Lista de Tareas</title>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
+  <link href="https://fonts.googleapis.com/css?family=Oswald:400,700" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="/style.css">
 </head>
 <body>
   <div class="container">
     <div class="row">
       <div class="jumbotron jumbotron-fluid container">
         <div class="container">
-          <h1 class="display-4 text-center">TO DO LIST</h1>
+          <h1 class="display-4 text-center mb-5">TO DO LIST</h1>
+          <form action="/createtask" method="post">
+            <div class="form-group text-center">
+              <input type="text" name="tasks" placeholder="Task" class="form-control">
+              <button type="submit" class="btn btn-dark my-2">Add Task</button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col">
-        <form action="/createtask" method="post">
-          <div class="form-group">
-            <input type="text" name="task" placeholder="Task">
-            <button type="submit">Add Task</button>
-          </div>
-        </form>
-        <!--<form action="/completetask" method="post">
-          <div class="form-group">
-            <input type="text" name="task" placeholder="Task">
-            <button type="submit">Complete Task</button>
-          </div>
-        </form>-->
-      </div>
-    </div>
-    <div class="row">
-        <div class="col">
-          <h4>To Do:</h4>
-          <table class="table table-striped">
-            <tbody>
-              <tr>
-                <% n = @tareas.length %>
-                <% n.times do |i|%>
-                <%= @tareas[i]["title"] %><br>
-                <% end %>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="col">
-          <h4>Done:</h4>
-          <table class="table table-striped">
-            <tbody>
-              <tr>
-                <% n = @tareas.length %>
-                <% n.times do |i|%>
-                <%= @tareas[i]["done"] %><br>
-                <% end %>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-    </div>
-  </div>
+    <ul>
+      <% @tasks.each do |task|  %>
+        <li <%= task["done"] == true ? 'class="done"' : 'class=""' %>>
+          <h4><%= task["title"].upcase %></h4>
 
+          <form action="/updatetask/<%= task["id"] %>" method="post">
+            <input type="hidden" name="_method" value="patch">
+            <button type="submit" title="Mark as Done" class="btn btn-dark fas fa-check-circle my-2 mx-1"></button>
+          </form>
+        
+          <form action="/deletetask/<%= task["id"] %>" method="post">
+            <input type="hidden" name="_method" value="delete">
+            <button type="submit" title="Delete Task" class="btn btn-dark fas fa-minus-circle my-2 mx-1"></button>
+          </form>
+
+        </li>
+      <% end %>
+    </ul>
+  </div>
+  <script src="/app.js"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>

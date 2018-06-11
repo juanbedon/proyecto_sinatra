@@ -1,0 +1,29 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'Oswald', sans-serif;
+	background-color: #71A6A1;
+}
+
+.jumbotron {
+	background-color: #71A6A1;
+}
+
+.done {
+  text-decoration: line-through;
+}
+
+.fa-check-circle {
+	color: #3BA63F;
+}
+
+.fa-minus-circle {
+	color: #D62332;
+}
+
+li {
+	list-style: decimal;
+	font-weight: bold;
+}
